@@ -1,0 +1,58 @@
+.top {
+background-color: rgb(240, 201, 229);
+color: black;
+width: 700px;
+margin: auto;
+
+}
+
+h1 {
+padding-bottom: 30px;
+padding-top: 1ch;
+
+}
+.new {
+margin-left: 30px;
+padding: 8px 35px 8px 35px;
+background-color: rgb(198, 108, 185);
+border: none;
+color: aliceblue;
+border-radius: 5px;
+   
+}
+.bottom-list {
+background-color: rgb(240, 201, 229);
+color: white;
+width: 700px;
+padding-top: 40px;
+padding-bottom: 40px;
+color: black;
+margin: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+text-align: left;
+}
+.remove {
+padding: 8px 35px 8px 35px;
+background-color:aliceblue;
+border: none;
+color: black;
+border-radius: 5px;
+margin: 5px;
+
+
+}
+input {
+color: black;
+}
+.individual-task {
+display:flex;
+width: 100%;
+justify-content: space-between;
+padding-top: 20px;
+padding-left: 120px;
+padding-right: 120px;
+
+}

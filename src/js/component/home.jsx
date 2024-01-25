@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
@@ -17,7 +18,7 @@ const Home = () => {
     setTodo("");
   };
   const removeTodos = (todo) => {
-    const newTodos = todos.filter((task) => task.label !== todo.label);
+    const newTodos = todos.filter((task) => task!== todo);
     setTodos(newTodos);
   };
   return (

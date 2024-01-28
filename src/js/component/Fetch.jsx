@@ -1,4 +1,4 @@
-fetch('https://playground.4geeks.com/apis/fake/todos/user/alesanchezr', {
+fetch("https://playground.4geeks.com/apis/fake/todos/user/MariaOrtega", {
       method: "PUT",
       body: JSON.stringify(todos),
       headers: {
@@ -6,14 +6,13 @@ fetch('https://playground.4geeks.com/apis/fake/todos/user/alesanchezr', {
       }
     })
     .then(resp => {
-        console.log(resp.ok); 
-        console.log(resp.status); 
-        console.log(resp.text()); 
+ if (!resp.ok) throw Error (response.statusText)
         return resp.json(); 
     })
-    .then(data => {
-
-        console.log(data); 
+    .then(resp => {
+setTodos (todos)
+        console.log(resp); 
+    })
     .catch(error => {
 
         console.log(error);

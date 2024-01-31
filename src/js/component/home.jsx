@@ -6,20 +6,15 @@ import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
-  const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState("");
+  const [todoList, setTodoList] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-  const addTodos = (newTodo) => {
-    // const task = {
-    //   label: todo,
-    //   done: false,
-    // };
-    // setTodos([...todos, task]);
-    // setTodo("");
-let newTodos = [...todos, {label: newTodo, done:false}]
+  const addTodos = () => {
+    
+let newTodoList = [...todoList, {label: inputValue, done:false}]
 fetch("https://playground.4geeks.com/apis/fake/todos/user/MariaOrtega", {
       method: "PUT",
-      body: JSON.stringify(newTodos),
+      body: JSON.stringify(newTodoList),
       headers: {
         "Content-Type": "application/json"
       }
@@ -29,7 +24,7 @@ fetch("https://playground.4geeks.com/apis/fake/todos/user/MariaOrtega", {
         return resp.json(); 
     })
     .then(resp => {
-setTodos (newTodos)
+setTodoList (newTodoList)
         console.log(resp); 
     })
     .catch(error => {
@@ -37,12 +32,12 @@ setTodos (newTodos)
         console.log(error);
     });
   };
-  const removeTodos = (index) => {
-    const newTodos = todos.filter((task,currentIndex) => index!== currentIndex);
+  const removeTodo = (index) => {
+    const newTodoList = todoList.filter((item,currentIndex) => index!== currentIndex);
     // setTodos(newTodos);
     fetch("https://playground.4geeks.com/apis/fake/todos/user/MariaOrtega", {
       method: "PUT",
-      body: JSON.stringify(newTodos),
+      body: JSON.stringify(newTodoList),
       headers: {
         "Content-Type": "application/json"
       }
@@ -52,7 +47,7 @@ setTodos (newTodos)
         return resp.json(); 
     })
     .then(resp => {
-setTodos (newTodos)
+setTodoList (newTodoList)
         console.log(resp); 
     })
     .catch(error => {
@@ -67,7 +62,7 @@ useEffect (() => {
          resp.json() 
     )
     .then(data => {
-setTodos (data)
+setTodoList (data)
         console.log(resp); 
     })
     .catch(error => {
@@ -75,26 +70,27 @@ setTodos (data)
         console.log(error);
     });
   },[])
+  
   return (
     <div className="text-center">
       <div className="top">
         <h1> To-do List </h1> 
         <input
-          value={todo}
+          value={inputValue}
           type="text"
           placeholder="Add new task"
-          onChange={(e) => setTodo(e.target.value)}/>
-        <button onClick={() => addTodos(todo)} className="new">
+          onChange={(e) => setInputValue(e.target.value)}/>
+        <button onClick={() => addTodos()} className="new">
           Add Task
         </button>
       </div>
       <div className="bottom-list">
-        {todos?.map((task, index) => (
+        {todoList?.map((item, index) => (
           <div className= "individual-task"key={index}>
-            <div> {task.label}</div>
+            <div> {item.label}</div>
             <button
               className="remove"
-              onClick={() => removeTodos(index)}>
+              onClick={() => removeTodo(index)}>
               Remove
             </button>
           </div>
